@@ -75,11 +75,9 @@ import {MatDividerModule} from '@angular/material/divider';
     HttpClientModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    FormBaseComponent,
     MatRadioModule,
     MatDividerModule,
-    MatCheckboxModule,
-    FormBaseComponent
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

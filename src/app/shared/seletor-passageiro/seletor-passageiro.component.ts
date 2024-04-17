@@ -1,5 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 
 @Component({
   selector: 'app-seletor-passageiro',
@@ -17,6 +18,12 @@ export class SeletorPassageiroComponent implements ControlValueAccessor{
   
   @Input() titulo : string = ''
   @Input() subtitulo : string = ''
+
+  constructor(
+    public formBuscaService: FormBuscaService
+  ){
+
+  }
 
   value: number = 0
 
@@ -37,15 +44,17 @@ export class SeletorPassageiroComponent implements ControlValueAccessor{
 
   incrementar() {
     this.value += 1;
-    this.onChange(this.value)
-    this.onTouch()
+    this.onChange(this.value);
+    this.onTouch();
+    this.formBuscaService.alterarQuantidade(this.value, this.titulo);
   }
 
   decrementar(){
     if(this.value > 0){
       this.value -= 1;
-      this.onChange(this.value)
-      this.onTouch()
+      this.onChange(this.value);
+      this.onTouch();
+      this.formBuscaService.alterarQuantidade(this.value, this.titulo)
     }
   }
 

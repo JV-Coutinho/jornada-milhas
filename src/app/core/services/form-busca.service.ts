@@ -40,7 +40,7 @@ export class FormBuscaService {
 
     const bebes = this.formBusca.get('bebes')?.value
     if(bebes && bebes > 0){
-      descricao += `${descricao ? ', ': ''}${bebes} bebês${bebes > 1 ? 's' : ''}`
+      descricao += `${descricao ? ', ': ''}${bebes} bebê${bebes > 1 ? 's' : ''}`
     }
 
     return descricao
@@ -60,6 +60,22 @@ export class FormBuscaService {
     if (evento.selected) {
       this.formBusca.patchValue({
         tipo
+      })
+    }
+  }
+
+  alterarQuantidade(value: number, nome:string){
+    if(nome === "Adultos"){
+      this.formBusca.patchValue({
+        adultos: value
+      })
+    } else if(nome === "Crianças"){
+      this.formBusca.patchValue({
+        criancas: value
+      })
+    } else{
+      this.formBusca.patchValue({
+        bebes: value
       })
     }
   }
