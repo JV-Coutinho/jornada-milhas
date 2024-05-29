@@ -1,11 +1,25 @@
 <header class="app-header">
-    <mat-toolbar>
-        <img src="assets/imagens/logo.png" alt=" Logo da aplicação Jornada Milhas">
-        <span class="spacer"></span>
-        <button mat-button>Vender milhas</button>
-        <button mat-button>Sobre</button>
-        <button routerLink="/cadastro" mat-raised-button color="primary">CADASTRE-SE</button>
+  <mat-toolbar>
+    <img
+      src="assets/imagens/logo.png"
+      alt=" Logo da aplicação Jornada Milhas"
+    />
+    <span class="spacer"></span>
+    <div class="links-toobar">
+      <button mat-button>Vender milhas</button>
+      <button mat-button>Sobre</button>
+      <ng-container *ngIf="user$ | async as pessoaUsuaria; else login">
+        <a routerLink="/perfil">
+          <img src="assets/icones/user.png" alt="Icone da pessoa usuária" />
+        </a>
+        <button mat-stroked-button (click)="logout()">SAIR</button>
+      </ng-container>
+      <ng-template #login>
+        <button routerLink="/cadastro" mat-raised-button color="primary">
+          CADASTRE-SE
+        </button>
         <button routerLink="/login" mat-stroked-button color>LOGIN</button>
-
-    </mat-toolbar>
+      </ng-template>
+    </div>
+  </mat-toolbar>
 </header>
