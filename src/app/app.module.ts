@@ -47,6 +47,7 @@ import { ParadasComponent } from './shared/form-busca/filtros-complementares/par
 import { CompanhiasComponent } from './shared/form-busca/filtros-complementares/companhias/companhias.component';
 import { PrecosComponent } from './shared/form-busca/filtros-complementares/precos/precos.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { PassagemDestaqueComponent } from './shared/passagem-destaque/passagem-destaque.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import {MatSliderModule} from '@angular/material/slider';
     FiltrosComplementaresComponent,
     ParadasComponent,
     CompanhiasComponent,
-    PrecosComponent
+    PrecosComponent,
+    PassagemDestaqueComponent
   ],
   imports: [
     BrowserModule,
