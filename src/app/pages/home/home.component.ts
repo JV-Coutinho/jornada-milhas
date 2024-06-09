@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DepoimentosService } from 'src/app/core/services/depoimentos.service';
+import { PassagensService } from 'src/app/core/services/passagens.service';
 import { PromocaoService } from 'src/app/core/services/promocao.service';
-import { Depoimento, Promocao } from 'src/app/core/types/type';
+import { DadosBusca, Depoimento, Passagem, Promocao } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private servicoPromocao: PromocaoService,
     private servicoDepoimento: DepoimentosService,
-    private router: Router
+    private router: Router,
+    private passagensService: PassagensService
   ) {}
 
   depoimentos: Depoimento[] = [];

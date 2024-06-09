@@ -18,8 +18,8 @@ export class FormBuscaService {
 
     this.formBusca = new FormGroup({
       somenteIda,
-      origem: new FormControl(null, [Validators.required]),
-      destino: new FormControl(null, [Validators.required]),
+      origem: new FormControl(null),
+      destino: new FormControl(null),
       tipo: new FormControl("Executiva"),
       adultos: new FormControl(1),
       criancas: new FormControl(0),
@@ -88,13 +88,20 @@ export class FormBuscaService {
       passageirosCriancas: this.obterControle<number>('criancas').value,
       passageirosBebes: this.obterControle<number>('bebes').value,
       somenteIda: this.obterControle<boolean>('somenteIda').value,
-      origemId: this.obterControle<UnidadeFederativa>('origem').value.id,
-      destinoId: this.obterControle<UnidadeFederativa>('destino').value.id,
       tipo: this.obterControle<string>('tipo').value,
     }
     const dataVoltaControl = this.obterControle<Date>('dataVolta');
     if (dataVoltaControl.value) {
       dadosBusca.dataVolta = dataVoltaControl.value.toISOString();
+    }
+
+    const origemControl = this.obterControle<UnidadeFederativa>('origem');
+    if (origemControl.value) {
+      dadosBusca.origemId = origemControl.value.id
+    }
+    const destinoControl = this.obterControle<UnidadeFederativa>('destino');
+    if (destinoControl.value) {
+      dadosBusca.destinoId = destinoControl.value.id
     }
     return dadosBusca
   }
